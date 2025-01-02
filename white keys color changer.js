@@ -1,4 +1,4 @@
-does not work just yet
+ // does not work just yet
 
 // Function to change the color of a given key
 function changeKeyColor(keyId, color) {
