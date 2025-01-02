@@ -1,6 +1,6 @@
-script by hollowhydra aka dubbly
-its in testing it may not work just yet!
-code:
+// script by hollowhydra aka dubbly
+// its in testing it may not work just yet!
+// code:
 // prevents rainbow code from auto starting
 let isRainbowOn = false;
 let rainbowInterval;
