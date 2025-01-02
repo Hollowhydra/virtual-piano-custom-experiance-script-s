@@ -1,5 +1,1 @@
-rainbow:
 function gay() { const frequency = 0.1; const amplitude = 127; const phase1 = 0; const phase2 = 2 * Math.PI / 3; const phase3 = 4 * Math.PI / 3; const time = Date.now() / 200; const r = Math.sin(frequency * time + phase1) * amplitude + amplitude; const g = Math.sin(frequency * time + phase2) * amplitude + amplitude; const b = Math.sin(frequency * time + phase3) * amplitude + amplitude; return [Math.round(r), Math.round(g), Math.round(b)]; } function dothegay() { for (let i = 0; i < 10; i++) { const rgb = gay(); user_color = rgb } } setInterval(dothegay, 200);
-
-anti rainbow:
- function gay() { const frequency = 0.1; const amplitude = 127; const phase1 = 0; const phase2 = 2 * Math.PI / 3; const phase3 = 4 * Math.PI / 3; const time = Date.now() / 200; const r = Math.sin(frequency * time + phase1) * amplitude + amplitude; const g = Math.sin(frequency * time + phase2) * amplitude + amplitude; const b = Math.sin(frequency * time + phase3) * amplitude + amplitude; return [Math.round(61), Math.round(198), Math.round(244)]; } function dothegay() { for (let i = 0; i < 10; i++) { const rgb = gay(); user_color = rgb } } clearInterval(setInterval(dothegay, 200));
