@@ -1,63 +1,31 @@
-// List of names to cycle through
-let names = ["Dubbly", "John"]; // You can add or remove names from this array
-let currentNameIndex = 0; // Index to track the current name in the list
-let currentLetterIndex = 0; // Index to track the current letter being changed
+// script by Dubbly
+let names = ["name here", "name here"]; // You can add or remove by adding "name here" and a , for each extra one
+let currentNameIndex = 0; // reads list names
 
 function changeName() {
-    const baseName = names[currentNameIndex]; // Get the current name from the list
-    const nextName = names[(currentNameIndex + 1) % names.length]; // Get the next name, cycling back to the start
+    const currentName = names[currentNameIndex]; // grab name from list spot 0 onward
 
-    // Convert the base name to an array of characters
-    const nameArray = baseName.split('');
+    // Emit the current name to the socket
+    socket.emit('user name', currentName); // update name
 
-    // If the next name is shorter, remove extra letters from the base name
-    if (nextName.length < baseName.length) {
-        nameArray.splice(nextName.length); // Remove letters from the end
-    }
+    // Log the current name to the console
+    console.log(currentName);
 
-    // Change the current letter to the corresponding letter from the next name
-    nameArray[currentLetterIndex] = nextName[currentLetterIndex];
-
-    // If the next name is longer, add extra letters to the base name
-    if (nextName.length > baseName.length) {
-        while (nameArray.length < nextName.length) {
-            nameArray.push(' '); // Add spaces to match the length of the next name
-        }
-    }
-
-    // Join the array back into a string
-    const newName = nameArray.join('');
-
-    // Emit the new name to the socket
-    socket.emit('user name', newName); // Emit the updated name
-
-    // Log the new name to the console
-    console.clear(); // Clear the console for a cleaner output
-    console.log(newName);
-
-    // Update the indices for the next iteration
-    currentLetterIndex++;
-    if (currentLetterIndex >= nextName.length) {
-        currentLetterIndex = 0; // Reset letter index if it exceeds the length of the next name
-        currentNameIndex = (currentNameIndex + 1) % names.length; // Move to the next name in the list
-    }
+    // Update the index for the next iteration
+    currentNameIndex = (currentNameIndex + 1) % names.length; // Move to the next name in the list
 }
 
-// Start the interval to change the name every 200 milliseconds
-setInterval(changeName, 200);
+// timer when name will change
+setInterval(changeName, 1000);
 
-// Function to add a name to the list
+// call funnction to start program
 function addName(name) {
     if (!names.includes(name)) {
         names.push(name);
     }
 }
 
-// Function to remove a name from the list
+// remove name from list after its done
 function removeName(name) {
     names = names.filter(n => n !== name);
 }
-
-// Example usage of adding and removing names
-addName("Alice"); // Add a name
-removeName("John"); // Remove a name
