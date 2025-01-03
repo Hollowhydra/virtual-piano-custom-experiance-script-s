@@ -1,4 +1,4 @@
- // make my Anz
+ // make by Anz
 function pasteAndSubmitChat() { 
     // Define the array of messages you want to send
     const messages = [
