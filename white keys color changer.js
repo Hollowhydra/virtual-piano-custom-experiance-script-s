@@ -22,7 +22,7 @@ function changePianoKeyColor() {
 function reapplyKeyColor() {
     const whiteKeys = document.querySelectorAll('.key-white');
     whiteKeys.forEach(key => {
-        key.setAttribute('fill', '#8B0000'); // Dark red color (spicy red)
+        key.setAttribute('fill', '#color_code_here'); // keeps color fill, change this too
     });
 }
 
