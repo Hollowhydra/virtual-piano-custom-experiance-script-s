@@ -8,12 +8,12 @@ function changeWhiteBackgroundsToBlack() {
         // Get the computed style of the element
         const computedStyle = window.getComputedStyle(element);
         
-        // Check if the background color is white
-        if (computedStyle.backgroundColor === 'rgb(255, 255, 255)' || computedStyle.backgroundColor === 'white') {
+        // Check if the background color is white and if the element is not the chat input
+        if ((computedStyle.backgroundColor === 'rgb(255, 255, 255)' || computedStyle.backgroundColor === 'white') && element.id !== 'chat_input') {
             // Change the background color to black
             element.style.backgroundColor = 'black';
             // Optional: Change text color to white for better visibility
-            element.style.color = 'white';
+            // element.style.color = 'white';
         }
     });
 }
