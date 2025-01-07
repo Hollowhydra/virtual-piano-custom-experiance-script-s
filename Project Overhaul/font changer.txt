@@ -17,5 +17,20 @@ function changeFontForSpecificElement() {
     }
 }
 
-// Call the function to change the font
+// Function to change the font of the piano-body element to cursive
+function changePianoBodyFont() {
+    // Select the element by ID
+    const pianoBodyElement = document.getElementById('piano-body');
+
+    // Check if the element exists
+    if (pianoBodyElement) {
+        // Change the font family to cursive
+        pianoBodyElement.style.fontFamily = 'cursive';
+    } else {
+        console.error('Element with ID "piano-body" not found.');
+    }
+}
+
+// Call the functions to change the fonts
 changeFontForSpecificElement();
+changePianoBodyFont();
