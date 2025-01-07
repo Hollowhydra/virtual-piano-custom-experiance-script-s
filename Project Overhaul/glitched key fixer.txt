@@ -1,0 +1,21 @@
+// Function to reset the class names of the pressed keys
+function resetPressedKeyClassNames() {
+    // Select all elements with the class 'key-white'
+    const whiteKeys = document.querySelectorAll('.key-white.pressed');
+    
+    // Loop through each white key and reset its class name if it is pressed
+    whiteKeys.forEach(key => {
+        key.classList.remove('pressed'); // Remove the 'pressed' class
+    });
+
+    // Select all elements with the class 'key-black'
+    const blackKeys = document.querySelectorAll('.key-black.pressed');
+
+    // Loop through each black key and reset its class name if it is pressed
+    blackKeys.forEach(key => {
+        key.classList.remove('pressed'); // Remove the 'pressed' class
+    });
+}
+
+// Set an interval to check and reset pressed keys every 11 seconds
+setInterval(resetPressedKeyClassNames, 11000); // 11000 milliseconds = 11 seconds
