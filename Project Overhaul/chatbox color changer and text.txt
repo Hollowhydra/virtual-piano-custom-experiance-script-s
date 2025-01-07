@@ -1,0 +1,39 @@
+// Function to change the background, font family, and text color of the node_form element
+function customizeNodeFormStyles() {
+    // Select the element by class name
+    const nodeFormElement = document.querySelector('.node_form');
+
+    // Check if the element exists
+    if (nodeFormElement) {
+        // Define your customizable RGB colors for the gradient
+        const gradientColors = [
+            'rgb(0, 0, 0)',    // Color at 0%
+            'rgb(255, 255, 255)', // Color at 5%
+            'rgb(255, 255, 255)', // Color at 33%
+            'rgb(16, 16, 16)', // Color at 50%
+            'rgb(0, 0, 0)',    // Color at 56%
+            'rgb(0, 0, 0)',    // Color at 95%
+            'rgb(0, 0, 0)'     // Color at 100%
+        ];
+
+        // Create the linear gradient string
+        const gradientString = `linear-gradient(to bottom, ${gradientColors.join(', ')})`;
+
+        // Apply the gradient background to the element
+        nodeFormElement.style.background = gradientString;
+
+        // Change the font family to cursive
+        nodeFormElement.style.fontFamily = 'cursive';
+
+        // Define your customizable text color
+        const customTextColor = 'rgb(255, 0, 0)'; // Replace with your desired RGB color for text
+
+        // Change the text color
+        nodeFormElement.style.color = customTextColor;
+    } else {
+        console.error('Element with class "node_form" not found.');
+    }
+}
+
+// Call the function to customize the styles
+customizeNodeFormStyles();
