@@ -1,0 +1,21 @@
+// Function to change the font family of a specific element to Delius Swash Caps
+function changeFontForSpecificElement() {
+    // Load the Delius Swash Caps font from Google Fonts
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
+    // Select the specific element by ID
+    const element = document.getElementById('piano-key-history');
+
+    // Change the font family if the element exists
+    if (element) {
+        element.style.fontFamily = '"Delius Swash Caps"';
+    } else {
+        console.error('Element with ID "piano-key-history" not found.');
+    }
+}
+
+// Call the function to change the font
+changeFontForSpecificElement();

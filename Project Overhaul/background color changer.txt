@@ -1,0 +1,22 @@
+// Function to change all elements with background-color: white to black
+function changeWhiteBackgroundsToBlack() {
+    // Select all elements in the document
+    const allElements = document.querySelectorAll('*');
+
+    // Loop through each element
+    allElements.forEach(element => {
+        // Get the computed style of the element
+        const computedStyle = window.getComputedStyle(element);
+        
+        // Check if the background color is white
+        if (computedStyle.backgroundColor === 'rgb(255, 255, 255)' || computedStyle.backgroundColor === 'white') {
+            // Change the background color to black
+            element.style.backgroundColor = 'black';
+            // Optional: Change text color to white for better visibility
+            element.style.color = 'white';
+        }
+    });
+}
+
+// Call the function to execute the color change
+changeWhiteBackgroundsToBlack();

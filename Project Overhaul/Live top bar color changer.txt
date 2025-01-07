@@ -1,0 +1,14 @@
+// Function to change the background color of elements with class "chat_top_bar" to white
+function changeChatTopBarToWhite() {
+    // Select all elements with the class "chat_top_bar"
+    const chatTopBars = document.querySelectorAll('.chat_top_bar');
+
+    // Loop through each element and change its background color to white
+    chatTopBars.forEach(element => {
+        element.style.backgroundColor = 'white'; // Set background color to white
+        element.style.color = 'black'; // Optional: Change text color to black for better visibility
+    });
+}
+
+// Call the function to execute the color change
+changeChatTopBarToWhite();
