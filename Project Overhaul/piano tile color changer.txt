@@ -1,19 +1,43 @@
-// Function to change the color of the white piano keys
+// Function to change the color of the piano keys
 function changePianoKeyColor() {
+    // Define RGB colors for white and black keys
+    const whiteKeyColor = 'rgb(139, 0, 0)'; // Dark red color (spicy red)
+    const whiteKeyPressedColor = 'rgb(255, 0, 0)'; // Bright red when pressed
+
+    const blackKeyColor = 'rgb(0, 0, 0)'; // Black color
+    const blackKeyPressedColor = 'rgb(100, 100, 100)'; // Dark gray when pressed
+
     // Select all elements with the class 'key-white'
     const whiteKeys = document.querySelectorAll('.key-white');
     
-    // Loop through each key and change its fill color
+    // Loop through each white key and change its fill color
     whiteKeys.forEach(key => {
-        key.setAttribute('fill', '#8B0000'); // Dark red color (spicy red)
+        key.setAttribute('fill', whiteKeyColor); // Set default color
 
         // Add event listeners to change color on press
         key.addEventListener('mousedown', () => {
-            key.setAttribute('fill', '#8B0000'); // Keep it dark red when pressed
+            key.setAttribute('fill', whiteKeyPressedColor); // Change to pressed color
         });
 
         key.addEventListener('mouseup', () => {
-            key.setAttribute('fill', '#8B0000'); // Keep it dark red when released
+            key.setAttribute('fill', whiteKeyColor); // Change back to default color
+        });
+    });
+
+    // Select all elements with the class 'key-black'
+    const blackKeys = document.querySelectorAll('.key-black');
+
+    // Loop through each black key and change its fill color
+    blackKeys.forEach(key => {
+        key.setAttribute('fill', blackKeyColor); // Set default color
+
+        // Add event listeners to change color on press
+        key.addEventListener('mousedown', () => {
+            key.setAttribute('fill', blackKeyPressedColor); // Change to pressed color
+        });
+
+        key.addEventListener('mouseup', () => {
+            key.setAttribute('fill', blackKeyColor); // Change back to default color
         });
     });
 }
@@ -21,8 +45,14 @@ function changePianoKeyColor() {
 // Function to reapply the color to all keys
 function reapplyKeyColor() {
     const whiteKeys = document.querySelectorAll('.key-white');
+    const blackKeys = document.querySelectorAll('.key-black');
+
     whiteKeys.forEach(key => {
-        key.setAttribute('fill', '#8B0000'); // Dark red color (spicy red)
+        key.setAttribute('fill', 'rgb(139, 0, 0)'); // Dark red color (spicy red)
+    });
+
+    blackKeys.forEach(key => {
+        key.setAttribute('fill', 'rgb(0, 0, 0)'); // Black color
     });
 }
 
