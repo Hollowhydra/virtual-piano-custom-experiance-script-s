@@ -1,0 +1,82 @@
+// List of muted user IDs with names
+const mutedUserIDs = [
+    { id: "RiqWndPV87gPi4x_AAAAd", name: "Example User 1" }, // Example User 1
+    { id: "ABC123XYZ456789_AAA", name: "Example User 2" },   // Example User 2
+    { id: "UserID_Test_001", name: "Example User 3" },       // Example User 3
+    { id: "MutedUser_Example_4", name: "Example User 4" },   // Example User 4
+    { id: "SomeUniqueID_Example5", name: "Example User 5" }  // Example User 5
+];
+
+// Function to mute a user by their name
+function muteUserByName(username) {
+    const chatContainer = document.querySelector('#messages'); // Chat container selector
+    if (!chatContainer) {
+        console.error('Chat container not found. Please check the selector.');
+        return;
+    }
+
+    // Find the user's ID by their username
+    const userElement = [...chatContainer.querySelectorAll('li')].find((message) => {
+        const usernameElement = message.querySelector('.chat_allowed');
+        return usernameElement && usernameElement.textContent.trim() === username;
+    });
+
+    if (userElement) {
+        const userID = userElement.querySelector('.chat_allowed').getAttribute('data-csid');
+        if (userID && !mutedUserIDs.some((user) => user.id === userID)) {
+            mutedUserIDs.push({ id: userID, name: username });
+            console.log(`User "${username}" with ID "${userID}" has been added to the mute list.`);
+        } else {
+            console.log(`User "${username}" is already in the mute list.`);
+        }
+    } else {
+        console.log(`User "${username}" not found in the chat.`);
+    }
+
+    // Automatically hide messages from muted users
+    hideMessagesFromMutedUsers();
+
+    // Output the updated mute list
+    console.log("Updated Muted User List:");
+    mutedUserIDs.forEach((user) => {
+        console.log(`{ id: "${user.id}", name: "${user.name}" } // ${user.name}`);
+    });
+}
+
+// Function to hide messages from muted users
+function hideMessagesFromMutedUsers() {
+    const chatContainer = document.querySelector('#messages');
+    if (!chatContainer) return;
+
+    // Iterate through all chat messages and hide messages from muted users
+    [...chatContainer.querySelectorAll('li')].forEach((message) => {
+        const usernameElement = message.querySelector('.chat_allowed');
+        if (usernameElement) {
+            const userID = usernameElement.getAttribute('data-csid');
+            if (mutedUserIDs.some((user) => user.id === userID)) {
+                message.style.display = 'none'; // Hide the message
+            }
+        }
+    });
+}
+
+// Observe the chat container for new messages
+function observeChat() {
+    const chatContainer = document.querySelector('#messages');
+    if (!chatContainer) {
+        console.error('Chat container not found. Please check the selector.');
+        return;
+    }
+
+    const observer = new MutationObserver(() => {
+        hideMessagesFromMutedUsers();
+    });
+
+    observer.observe(chatContainer, { childList: true, subtree: true });
+}
+
+// Start observing the chat container
+observeChat();
+
+// Example usage:
+// muteUserByName("Prince Boo");
