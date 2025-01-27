@@ -17,5 +17,6 @@ function resetPressedKeyClassNames() {
     });
 }
 
-// Set an interval to check and reset pressed keys every 11 seconds
-setInterval(resetPressedKeyClassNames, 11000); // 11000 milliseconds = 11 seconds
+// change setTimeout to setInterval for it to continuly run program
+setTimeout(resetPressedKeyClassNames, 11000); // 1000 milliseconds = 1 second
+
