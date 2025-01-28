@@ -18,5 +18,5 @@ function resetPressedKeyClassNames() {
 }
 
 // change setTimeout to setInterval for it to continuly run program
-setTimeout(resetPressedKeyClassNames, 11000); // 1000 milliseconds = 1 second
+setTimeout(resetPressedKeyClassNames, 1000); // 1000 milliseconds = 1 second
 
