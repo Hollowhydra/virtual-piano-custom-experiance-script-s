@@ -1,0 +1,18 @@
+function calculateGrayColor() {
+    const frequency = 0.1; // Speed of the transition
+    const amplitude = 127; // Controls brightness range (127 ensures valid RGB values)
+    const time = Date.now() / 200; // Gradual change over time
+
+    // All color components (R, G, B) are the same for gray shades
+    const gray = Math.sin(frequency * time) * amplitude + amplitude;
+
+    return Math.round(gray); // Single value for R, G, and B
+}
+
+function applyGrayEffect() {
+    const gray = calculateGrayColor();
+    user_color = `${gray}, ${gray}, ${gray}`; // Update to a gray shade
+}
+
+// Start the gray color transition
+setInterval(applyGrayEffect, 200);
