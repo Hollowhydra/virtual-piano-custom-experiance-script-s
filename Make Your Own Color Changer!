@@ -1,0 +1,32 @@
+// Made to understand as simple as possible, By Dubbly!
+// Function to calculate the color transition
+function calculateColor() {
+    const speed = 0.1; // Controls how fast the colors change (Lower = Slower, Higher = Faster)
+    const intensity = 50; // Controls how much the colors shift (Higher = More Intense Change)
+
+    // Base colors (Change these values to set your desired colors!)
+    // Each value should be between 0 and 255 (like RGB colors).
+    
+    const baseColor1 = 150; // Change this for the RED base color (0 = No Red, 255 = Full Red)
+    const baseColor2 = 180; // Change this for the GREEN base color (0 = No Green, 255 = Full Green)
+    const baseColor3 = 200; // Change this for the BLUE base color (0 = No Blue, 255 = Full Blue)
+
+    const time = Date.now() / 200; // Keeps the color changing smoothly over time
+
+    // Calculate new color values using a smooth sine wave effect, DO NOT TOUCH!
+    const r = Math.sin(speed * time) * intensity + baseColor1; // Controls the RED color variation
+    const g = Math.sin(speed * time + Math.PI / 3) * intensity + baseColor2; // Controls the GREEN color variation
+    const b = Math.sin(speed * time + Math.PI / 2) * intensity + baseColor3; // Controls the BLUE color variation
+
+    // Return the new color values (rounded to whole numbers), Made To Prevent Unreconized Number colors And Break The Code
+    return [Math.round(r), Math.round(g), Math.round(b)];
+}
+
+// Function to apply the color effect to the user, Grabs the R G B colors applied at baseColor1, baseColor2, baseColor3
+function applyColorEffect() {
+    const [r, g, b] = calculateColor();
+    user_color = `${r}, ${g}, ${b}`; // Updates the user's color, color given at baseColor(s)
+}
+
+// Runs the effect every 200ms to keep updating the color smoothly, change (ms) to your liking, lower the number the faster, higher the number the slower
+setInterval(applyColorEffect, 200); // 1000 ms = 1 second
