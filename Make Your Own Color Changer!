@@ -14,9 +14,9 @@ function calculateColor() {
     const time = Date.now() / 200; // Keeps the color changing smoothly over time
 
     // Calculate new color values using a smooth sine wave effect, DO NOT TOUCH!
-    const r = Math.sin(speed * time) * intensity + baseColor1; // Controls the RED color variation
-    const g = Math.sin(speed * time + Math.PI / 3) * intensity + baseColor2; // Controls the GREEN color variation
-    const b = Math.sin(speed * time + Math.PI / 2) * intensity + baseColor3; // Controls the BLUE color variation
+    const r = Math.sin(speed * time) * intensity + baseColor1; // Controls the RED color variation, IF AT 0, Replace with baseColor1; example const r = baseColor1;
+    const g = Math.sin(speed * time + Math.PI / 3) * intensity + baseColor2; // Controls the GREEN color variation, IF AT 0, Replace with baseColor2; example const g = baseColor2;
+    const b = Math.sin(speed * time + Math.PI / 2) * intensity + baseColor3; // Controls the BLUE color variation, IF AT 0, Replace with baseColor3; example const b = baseColor3;
 
     // Return the new color values (rounded to whole numbers), Made To Prevent Unreconized Number colors And Break The Code
     return [Math.round(r), Math.round(g), Math.round(b)];
