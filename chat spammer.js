@@ -84,7 +84,7 @@ function pasteAndSubmitChat() {
     }
 
     // Set the interval to every 1 second (1000 milliseconds)
-    setInterval(sendMessage, 1000);
+    setInterval(sendMessage, 1000); // editor note, setting below 100 will crash site DO NOT SET BELOW!
 }
 
 pasteAndSubmitChat();
