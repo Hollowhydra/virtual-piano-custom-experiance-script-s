@@ -1,0 +1,261 @@
+(function() {
+    // Step 1: Create the main UI container
+    const uiContainer = document.createElement('div');
+    uiContainer.style.position = 'fixed';
+    uiContainer.style.top = '20px';
+    uiContainer.style.left = '20px';
+    uiContainer.style.width = '420px'; // Increased width for better layout
+    uiContainer.style.height = '700px'; // Increased height for more space
+    uiContainer.style.backgroundColor = '#333'; // Black background
+    uiContainer.style.borderRadius = '10px';
+    uiContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+    uiContainer.style.padding = '20px';
+    uiContainer.style.zIndex = '9999';
+    document.body.appendChild(uiContainer);
+
+    // Step 2: Create Header with minimize button
+    const uiHeader = document.createElement('div');
+    uiHeader.style.display = 'flex';
+    uiHeader.style.justifyContent = 'space-between';
+    uiHeader.style.alignItems = 'center';
+    const headerTitle = document.createElement('h3');
+    headerTitle.textContent = 'Custom UI';
+    headerTitle.style.color = '#fff'; // White title text
+    headerTitle.style.marginLeft = '40px'; // Offset to avoid collision with nav
+    uiHeader.appendChild(headerTitle);
+    const minimizeBtn = document.createElement('button');
+    minimizeBtn.textContent = 'Minimize';
+    minimizeBtn.style.cursor = 'pointer';
+    minimizeBtn.style.backgroundColor = '#555'; // Dark gray for minimize button
+    minimizeBtn.style.color = '#fff';
+    minimizeBtn.style.padding = '5px 10px';
+    minimizeBtn.style.border = 'none';
+    minimizeBtn.style.borderRadius = '5px';
+    uiHeader.appendChild(minimizeBtn);
+    uiContainer.appendChild(uiHeader);
+
+    // Step 3: Create navigation bar (hidden by default)
+    const navBar = document.createElement('div');
+    navBar.style.display = 'none';  // Hidden initially
+    navBar.style.position = 'absolute';
+    navBar.style.top = '0';
+    navBar.style.left = '0';
+    navBar.style.width = '250px';
+    navBar.style.height = '100%'; // Makes the nav bar full height
+    navBar.style.backgroundColor = '#222'; // Dark background for nav bar
+    navBar.style.padding = '20px';
+    navBar.style.borderRadius = '10px';
+    navBar.style.color = 'white';
+
+    // Navigation Links
+    const homePageLink = document.createElement('a');
+    homePageLink.textContent = 'Home';
+    homePageLink.style.color = 'white';
+    homePageLink.style.textDecoration = 'none';
+    homePageLink.style.display = 'block';
+    homePageLink.style.padding = '10px';
+    homePageLink.style.margin = '5px 0';
+    homePageLink.style.backgroundColor = '#444'; // Dark gray for links
+    navBar.appendChild(homePageLink);
+
+    const userColorBtn = document.createElement('a');
+    userColorBtn.textContent = 'User Color Changer';
+    userColorBtn.style.color = 'white';
+    userColorBtn.style.textDecoration = 'none';
+    userColorBtn.style.display = 'block';
+    userColorBtn.style.padding = '10px';
+    userColorBtn.style.margin = '5px 0';
+    userColorBtn.style.backgroundColor = '#444'; // Dark gray for links
+    navBar.appendChild(userColorBtn);
+
+    const nameChangeBtn = document.createElement('a');
+    nameChangeBtn.textContent = 'Name Changer';
+    nameChangeBtn.style.color = 'white';
+    nameChangeBtn.style.textDecoration = 'none';
+    nameChangeBtn.style.display = 'block';
+    nameChangeBtn.style.padding = '10px';
+    nameChangeBtn.style.margin = '5px 0';
+    nameChangeBtn.style.backgroundColor = '#444'; // Dark gray for links
+    navBar.appendChild(nameChangeBtn);
+
+    uiContainer.appendChild(navBar);
+
+    // Step 4: Create content area for sections
+    const contentArea = document.createElement('div');
+    contentArea.style.marginTop = '20px';
+    uiContainer.appendChild(contentArea);
+
+    // Home Page (Default View)
+    const homePage = document.createElement('div');
+    const homeTitle = document.createElement('h4');
+    homeTitle.textContent = 'Welcome to the Custom UI!';
+    homeTitle.style.color = '#fff'; // White text for home title
+    const homeDescription = document.createElement('p');
+    homeDescription.textContent = 'Here you can change your user name and color, among other things. Use the navigation bar on the left to explore options.';
+    homeDescription.style.color = '#fff'; // White text for description
+    homePage.appendChild(homeTitle);
+    homePage.appendChild(homeDescription);
+    contentArea.appendChild(homePage);
+
+    // User Color Changer Section (Initially Hidden)
+    const userColorSection = document.createElement('div');
+    userColorSection.style.display = 'none';
+    const colorInput = document.createElement('input');
+    colorInput.type = 'text';
+    colorInput.placeholder = 'Enter RGB (e.g. 140,140,140)';
+    colorInput.style.width = '100%';
+    colorInput.style.padding = '10px';
+    colorInput.style.borderRadius = '5px';
+    colorInput.style.marginTop = '10px';
+    colorInput.style.backgroundColor = '#444'; // Dark gray input field
+    colorInput.style.color = '#fff'; // White text in input field
+    userColorSection.appendChild(colorInput);
+    const colorSubmitBtn = document.createElement('button');
+    colorSubmitBtn.textContent = 'Change Color';
+    colorSubmitBtn.style.backgroundColor = '#D32F2F'; // Red for submit button
+    colorSubmitBtn.style.color = 'white';
+    colorSubmitBtn.style.padding = '10px';
+    colorSubmitBtn.style.border = 'none';
+    colorSubmitBtn.style.borderRadius = '5px';
+    colorSubmitBtn.style.width = '100%';
+    colorSubmitBtn.style.marginTop = '10px';
+    userColorSection.appendChild(colorSubmitBtn);
+    contentArea.appendChild(userColorSection);
+
+    // Name Change Section (Initially Hidden)
+    const nameChangeSection = document.createElement('div');
+    nameChangeSection.style.display = 'none';
+    const nameInput = document.createElement('input');
+    nameInput.type = 'text';
+    nameInput.placeholder = 'Enter new name';
+    nameInput.style.width = '100%';
+    nameInput.style.padding = '10px';
+    nameInput.style.borderRadius = '5px';
+    nameInput.style.marginTop = '10px';
+    nameInput.style.backgroundColor = '#444'; // Dark gray input field
+    nameInput.style.color = '#fff'; // White text in input field
+    nameChangeSection.appendChild(nameInput);
+    const nameSubmitBtn = document.createElement('button');
+    nameSubmitBtn.textContent = 'Change Name';
+    nameSubmitBtn.style.backgroundColor = '#D32F2F'; // Red for submit button
+    nameSubmitBtn.style.color = 'white';
+    nameSubmitBtn.style.padding = '10px';
+    nameSubmitBtn.style.border = 'none';
+    nameSubmitBtn.style.borderRadius = '5px';
+    nameSubmitBtn.style.width = '100%';
+    nameSubmitBtn.style.marginTop = '10px';
+    nameChangeSection.appendChild(nameSubmitBtn);
+    contentArea.appendChild(nameChangeSection);
+
+    // Step 5: Create Message Box for input feedback
+    const messageBox = document.createElement('div');
+    messageBox.style.display = 'none';
+    messageBox.style.backgroundColor = '#D32F2F'; // Red background for error/success messages
+    messageBox.style.color = 'white';
+    messageBox.style.padding = '10px';
+    messageBox.style.borderRadius = '5px';
+    messageBox.style.marginTop = '10px';
+    messageBox.style.textAlign = 'center';
+    messageBox.textContent = 'Input received!';
+    uiContainer.appendChild(messageBox);
+
+    // Step 6: Handle Minimize functionality
+    const minimizeBox = document.createElement('div');
+    minimizeBox.style.position = 'fixed';
+    minimizeBox.style.top = '20px';
+    minimizeBox.style.left = '20px';
+    minimizeBox.style.backgroundColor = '#D32F2F'; // Red for minimize button
+    minimizeBox.style.color = 'white';
+    minimizeBox.style.padding = '10px';
+    minimizeBox.style.borderRadius = '10px';
+    minimizeBox.style.cursor = 'pointer';
+    minimizeBox.textContent = 'Open';
+    minimizeBox.style.zIndex = '9998';
+    document.body.appendChild(minimizeBox);
+
+    minimizeBox.addEventListener('click', function() {
+        uiContainer.style.display = 'block';
+        minimizeBox.style.display = 'none';
+    });
+
+    minimizeBtn.addEventListener('click', function() {
+        uiContainer.style.display = 'none';
+        minimizeBox.style.display = 'block';
+    });
+
+    // Step 7: Handle Navigation Menu Visibility
+    const navBtn = document.createElement('button');
+    navBtn.textContent = '☰'; // Menu button
+    navBtn.style.position = 'absolute';
+    navBtn.style.top = '20px';
+    navBtn.style.left = '20px';
+    navBtn.style.cursor = 'pointer';
+    navBtn.style.backgroundColor = '#333';
+    navBtn.style.color = 'white';
+    navBtn.style.border = 'none';
+    navBtn.style.borderRadius = '5px';
+    navBtn.style.padding = '10px';
+    uiContainer.appendChild(navBtn);
+
+    navBtn.addEventListener('click', function() {
+        if (navBar.style.display === 'none') {
+            navBar.style.display = 'block'; // Show nav bar
+        } else {
+            navBar.style.display = 'none'; // Hide nav bar
+        }
+    });
+
+    // Handle Section Navigation
+    homePageLink.addEventListener('click', function() {
+        homePage.style.display = 'block';
+        userColorSection.style.display = 'none';
+        nameChangeSection.style.display = 'none';
+    });
+
+    userColorBtn.addEventListener('click', function() {
+        homePage.style.display = 'none';
+        userColorSection.style.display = 'block';
+        nameChangeSection.style.display = 'none';
+        navBar.style.display = 'none'; // Hide nav bar after click
+    });
+
+    nameChangeBtn.addEventListener('click', function() {
+        homePage.style.display = 'none';
+        userColorSection.style.display = 'none';
+        nameChangeSection.style.display = 'block';
+        navBar.style.display = 'none'; // Hide nav bar after click
+    });
+
+    // Step 8: Handle Color Change
+    colorSubmitBtn.addEventListener('click', function() {
+        const colorValue = colorInput.value.trim();
+        const regex = /^\d{1,3},\s?\d{1,3},\s?\d{1,3}$/; // RGB Format Validation
+        if (regex.test(colorValue)) {
+            const userColor = colorValue.replace(/\s/g, ''); // Remove extra spaces
+            console.log(`user_color = '${userColor}'`); // Log to console in the correct format
+            messageBox.textContent = `Color Changed to: ${userColor}`;
+            messageBox.style.display = 'block';
+            setTimeout(() => { messageBox.style.display = 'none'; }, 2000);
+        } else {
+            messageBox.textContent = 'Invalid Color Format!';
+            messageBox.style.display = 'block';
+            setTimeout(() => { messageBox.style.display = 'none'; }, 2000);
+        }
+    });
+
+    // Step 9: Handle Name Change
+    nameSubmitBtn.addEventListener('click', function() {
+        const name = nameInput.value.trim();
+        if (name === "") {
+            messageBox.textContent = 'Name cannot be empty!';
+            messageBox.style.display = 'block';
+            setTimeout(() => { messageBox.style.display = 'none'; }, 2000);
+        } else {
+            socket.emit('user name', name); // Change user name
+            messageBox.textContent = 'Name Changed!';
+            messageBox.style.display = 'block';
+            setTimeout(() => { messageBox.style.display = 'none'; }, 2000);
+        }
+    });
+
+})();
