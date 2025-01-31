@@ -7,3 +7,5 @@ type allow pasting
 then paste the following code in from one of the scripts in the disposatory
 
 enjoy!
+IF your having a hard time understanding this, there is a video i made to show you step by step what to do
+https://www.youtube.com/watch?v=RBqLzcbmYCY
