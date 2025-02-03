@@ -1,11 +1,9 @@
-// Function to change all elements with background-color: white to black
 function changeWhiteBackgroundsToBlack() {
     // Select all elements in the document
     const allElements = document.querySelectorAll('*');
 
     // Loop through each element
     allElements.forEach(element => {
-        // Get the computed style of the element
         const computedStyle = window.getComputedStyle(element);
         
         // Check if the background color is white and if the element is not the chat input
@@ -13,7 +11,14 @@ function changeWhiteBackgroundsToBlack() {
             // Change the background color to black
             element.style.backgroundColor = 'black';
             // Optional: Change text color to white for better visibility
-            // element.style.color = 'white';
+            element.style.color = 'white';
+        }
+
+        // If the element is the active theme element
+        if (element.classList.contains('active')) {
+            // Change the background color of the active theme
+            element.style.backgroundColor = 'rgb(30, 30, 30)'; // Change to desired color
+            element.style.color = 'white'; // Optional: Change text color
         }
     });
 }
